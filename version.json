@@ -2,5 +2,6 @@
   "version_code": 2,
   "title": "Update available",
   "message": "A new version of Bidamax is ready.",
-  "update_url": "https://github.com/missnapokita/bidamaxhaha/releases/latest"
+  "update_url": "https://github.com/missnapokita/bidamaxhaha/releases/latest",
+  "cancelable": false
 }
