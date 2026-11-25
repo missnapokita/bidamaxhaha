@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; connect-src https:; form-action 'none'; base-uri 'none'">
+  <title>Bidamax Admin · Live audience</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="container masthead-content">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bida<span class="red">max</span></span>
+        <span class="admin-label">Admin</span>
+      </div>
+      <button class="button button-quiet" id="disconnect" type="button" hidden>Disconnect</button>
+    </div>
+  </header>
+  <main class="container">
+    <header class="page-heading">
+      <div>
+        <h1>Live audience</h1>
+        <p>Online and watching on Bidamax</p>
+      </div>
+      <div class="live-actions" id="actions" hidden>
+        <span class="status" id="status" role="status"><span class="dot"></span><span id="status-label">Connecting</span></span>
+        <button class="button button-quiet" id="refresh" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <form id="connect" class="panel connect-panel">
+      <h2>Connect dashboard</h2>
+      <label for="admin-key">Admin key</label>
+      <input type="password" id="admin-key" required autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="256">
+      <button class="button button-primary" id="connect-button" type="submit">Connect</button>
+      <p class="error" id="connect-error" role="alert" hidden></p>
+    </form>
+
+    <div id="dashboard" hidden>
+      <section class="metrics" aria-label="Audience totals">
+        <article class="metric panel metric-online">
+          <p class="metric-label"><span class="dot"></span>Online</p>
+          <strong id="online">—</strong>
+          <p class="metric-caption">All active installs</p>
+        </article>
+        <article class="metric panel metric-watching">
+          <p class="metric-label"><span class="dot"></span>Watching</p>
+          <strong id="watching">—</strong>
+          <p class="metric-caption">Video in progress</p>
+        </article>
+        <article class="metric panel">
+          <p class="metric-label"><span class="dot"></span>Browsing</p>
+          <strong id="browsing">—</strong>
+          <p class="metric-caption">Online without playback</p>
+        </article>
+      </section>
+      <section class="panel devices" aria-labelledby="devices-heading">
+        <div class="devices-heading">
+          <div>
+            <h2 id="devices-heading">Active installs</h2>
+            <p id="showing">Waiting for data</p>
+          </div>
+          <p id="updated"></p>
+        </div>
+        <table id="devices-table" hidden>
+          <thead><tr><th scope="col">Install ID</th><th scope="col">Activity</th><th scope="col">Last seen</th></tr></thead>
+          <tbody id="devices-body"></tbody>
+        </table>
+        <p id="empty" class="empty" hidden>No active installs right now.</p>
+        <nav class="pagination" id="pagination" aria-label="Active installs pages" hidden>
+          <button class="button button-quiet" id="previous" type="button">Previous</button>
+          <button class="button button-quiet" id="next" type="button">Next</button>
+        </nav>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
